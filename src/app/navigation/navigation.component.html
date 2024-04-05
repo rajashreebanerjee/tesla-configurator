@@ -1,0 +1,24 @@
+<nav>
+    <ul>
+        <li>
+            <a routerLink="/step-1" id="step1">
+                Step 1
+            </a>
+        </li>
+
+        <li>
+            <a [routerLink]="activeStep2 ? '/step-2': ''"
+               [ngClass]="{'disabled': !activeStep2}"
+               id="step2">
+                Step 2
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="activeStep3 ? '/step-3': ''"
+               [ngClass]="{'disabled': !activeStep3}"
+               id="step3">
+                Step 3
+            </a>
+        </li>
+    </ul>
+</nav>

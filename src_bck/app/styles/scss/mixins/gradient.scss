@@ -1,0 +1,18 @@
+@mixin border-gradient($value) {
+  content: "";
+  height: 2px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background: linear-gradient(45deg, transparent, grey, transparent);
+
+  /* https://sass-lang.com/documentation/at-rules/control/if/ */
+  @if $value == 'top' {
+    top: 0;
+  }
+
+  @if $value == 'bottom' {
+    bottom: 0;
+  }
+}

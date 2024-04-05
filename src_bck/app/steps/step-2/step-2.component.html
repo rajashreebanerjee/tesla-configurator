@@ -1,0 +1,40 @@
+<h1>Step 2: Select your config and options</h1>
+
+<form class="step-2-container" [formGroup]="step2Form">
+    <div class="tesla-config">
+        <label for="configSelect">Config:</label>
+        <select name="config" id="configSelect" formControlName="currentConfig" (change)="onModelChange($event)">
+            @if (configInformation?.configs?.length) {
+                <option value="" selected>Choose...</option>
+                @for (config of configInformation?.configs; track config.id) {
+                    <option [value]="config.description">{{ config?.description }}</option>
+                }
+            }
+        </select>
+    </div>
+
+
+    @if (selectedConfig?.range) {
+        <div class="details">
+            <span>Range: {{ selectedConfig?.range }} miles - Max speed: {{ selectedConfig?.speed }} - Cost {{ selectedConfig?.price | currencyFormat }}</span>
+        </div>
+    }
+
+    <div class="options">
+        <div>
+            <label for="includeTow">Tow hitch?</label>
+            <input type="checkbox" formControlName="towHitch" id="includeTow" (change)="towCheck($event)" />
+        </div>
+        <div>
+            <label for="includeYoke">Yoke steering wheel? </label>
+            <input type="checkbox" formControlName="yoke" id="includeYoke" (change)="yokeCheck($event)" />
+        </div>
+    </div>
+
+    @if (imagePath) {
+        <div class="step-2-image">
+            <img [src]="imagePath" width="1330" height="738">
+        </div>
+    }
+</form>
+

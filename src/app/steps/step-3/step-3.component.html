@@ -1,0 +1,58 @@
+<h1>Step 3: Summary</h1>
+
+@if (saveStep1Info?.currentModel) {
+    <div class="step-3-container">
+        <h2>Your Tesla {{ saveStep1Info?.currentModel }}</h2>
+
+        <table>
+            <tbody>
+                @if (saveStep2Info?.currentConfig) {
+                    <tr>
+                        <td class="option">{{ saveStep2Info?.currentConfig }}</td>
+                        <td>{{ saveStep2Info?.configs?.price | currency}}</td>
+                    </tr>
+                }
+
+                @if (saveStep2Info?.configs?.range) {
+                    <tr>
+                        <td>Range - {{ saveStep2Info?.configs?.range }} miles - Max speed: {{ saveStep2Info?.configs?.speed }}</td>
+                    </tr>
+                }
+
+                @if (saveStep1Info?.selectedColor?.description) {
+                    <tr>
+                        <td class="option">{{ saveStep1Info?.selectedColor?.description }}</td>
+                        <td> {{ saveStep1Info?.selectedColor?.price | currency}}</td>
+                    </tr>
+                }
+
+                @if (saveStep2Info?.towHitch) {
+                    <tr>
+                        <td class="option">Tow Hitch Package</td>
+                        <td>{{ OPTION_UPSELL_PRICE | currency }}</td>
+                    </tr>
+                }
+
+                @if (saveStep2Info?.yoke) {
+                    <tr>
+                        <td class="option">Yoke Package</td>
+                        <td>{{ OPTION_UPSELL_PRICE | currency }}</td>
+                    </tr>
+                }
+
+                @if (totalPrice) {
+                    <tr class="bordered">
+                        <td class="total">total cost</td>
+                        <td>{{ totalPrice | currency }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @if (imagePath) {
+        <div class="step-3-image">
+            <img [src]="imagePath" width="1330" height="738">
+        </div>
+    }
+}
+
